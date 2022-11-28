@@ -16,7 +16,9 @@ const schema = yup
     productId: yup.string().max(50),
     categoryId: yup.string().required("Required.").max(50),
     name: yup.string().required("Required.").max(50),
+    name_vn: yup.string().required("Required.").max(50),
     description: yup.string().required("Required."),
+    description_vn: yup.string().required("Required."),
   })
   .shape({
     filepath: yup.mixed(),
@@ -32,9 +34,11 @@ const schema = yup
   });
 
 const ProductForm = ({ defaultValues, path, mutateAsync }) => {
-  const [imageUrl, setPhoto] = useState(defaultValues.img);
+  const [imageUrl, setPhoto] = useState(defaultValues.image);
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
+
+  console.log(filepath);
 
   const {
     register,
@@ -46,7 +50,8 @@ const ProductForm = ({ defaultValues, path, mutateAsync }) => {
     defaultValues: defaultValues,
     resolver: yupResolver(schema),
   });
-  const { name, description, filepath, categoryId } = errors;
+  const { name, name_vn, description, description_vn, filepath, categoryId } =
+    errors;
 
   const onSubmit = async (formData) => {
     if (imageUrl === "") {
@@ -58,7 +63,9 @@ const ProductForm = ({ defaultValues, path, mutateAsync }) => {
     let data = {
       productId: formData.productId,
       name: formData.name,
+      name_vn: formData.name_vn,
       description: formData.description,
+      description_vn: formData.description_vn,
       category: formData.categoryId,
       image: imageUrl,
     };
@@ -118,6 +125,13 @@ const ProductForm = ({ defaultValues, path, mutateAsync }) => {
           register={register}
           errorMessage={name?.message}
         />
+        <Input
+          name="name_vn"
+          label="Product Name Vietnam"
+          type="text"
+          register={register}
+          errorMessage={name_vn?.message}
+        />
         <SelectFromDb
           control={control}
           label="Category"
@@ -127,8 +141,15 @@ const ProductForm = ({ defaultValues, path, mutateAsync }) => {
         />
         <RichText
           control={control}
+          label="Description"
           name="description"
           errorMessage={description?.message}
+        />
+        <RichText
+          control={control}
+          label="Description Vietnam"
+          name="description_vn"
+          errorMessage={description_vn?.message}
         />
         <SaveButton btnText="Save" disabled={submitting} />
       </div>

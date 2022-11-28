@@ -27,25 +27,38 @@ export default async function handler(req, res) {
     case "POST":
       const name = req.body.name;
       const description = req.body.description;
+      const name_vn = req.body.name_vn;
+      const description_vn = req.body.description_vn;
       const image = req.body.image;
       const category = req.body.category;
 
-      result = await createProduct(name, description, image, category);
+      result = await createProduct(
+        name,
+        description,
+        name_vn,
+        description_vn,
+        image,
+        category
+      );
       res
         .status(201)
         .json({ ...result, message: `product with name: ${name} created` });
       break;
 
     case "PUT":
-      const updateTitle = req.body.title;
+      const updateName = req.body.name;
+      const updateNameVn = req.body.name_vn;
       const updateDescription = req.body.description;
+      const updateDescriptionVn = req.body.description_vn;
       const updateImage = req.body.image;
       const updateCategory = req.body.category;
 
       result = await updateProduct(
         productId,
-        updateTitle,
+        updateName,
+        updateNameVn,
         updateDescription,
+        updateDescriptionVn,
         updateImage,
         updateCategory
       );

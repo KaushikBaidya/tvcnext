@@ -34,8 +34,9 @@ const ProductsList = () => {
         />
 
         <div className="list-wrapper">
-          <div className="md:grid grid-cols-3 list-header">
+          <div className="md:grid grid-cols-4 list-header">
             <ListHeader label="Name" />
+            <ListHeader label="Name Vietnam" />
             {/* <ListHeader label="Image" /> */}
             <ListHeader label="Category" />
             <ListHeader label="" />
@@ -44,9 +45,10 @@ const ProductsList = () => {
             data.map((item) => (
               <div
                 key={item.productId}
-                className="grid grid-cols-1 md:grid-cols-3 list-body"
+                className="grid grid-cols-1 md:grid-cols-4 list-body"
               >
                 <ListCol label="Name :" value={item.name} />
+                <ListCol label="Name :" value={item.name_vn} />
                 {/* <ListCol label="Image :" value={item.image} /> */}
                 <ListCol label="Category :" value={item.category} />
                 <div>

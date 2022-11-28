@@ -1,11 +1,38 @@
 const mysql = require("mysql2/promise");
 import mysqlConfig from "../database/db";
 
-const createProduct = async (name, description, image, category) => {
+const createProduct = async (
+  name,
+  description,
+  name_vn,
+  description_vn,
+  image,
+  category
+) => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      `INSERT INTO products ( name, description, image, category) VALUES ('${name}', '${description}', '${image}', '${category}');`
+      `INSERT INTO products ( name, name_vn, description, description_vn, image, category) VALUES ('${name}','${name_vn}', '${description}', '${description_vn}', '${image}', '${category}');`
+    );
+    return rows;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const updateProduct = async (
+  productId,
+  updateName,
+  updateNameVn,
+  updateDescription,
+  updateDescriptionVn,
+  updateImage,
+  updateCategory
+) => {
+  try {
+    const connection = await mysql.createConnection(mysqlConfig);
+    const [rows, fields] = await connection.execute(
+      `UPDATE products SET name = '${updateName}', name_vn = '${updateNameVn}', description= '${updateDescription}', description_vn = '${updateDescriptionVn}', image='${updateImage}', category='${updateCategory}' WHERE productId = ${productId}`
     );
     return rows;
   } catch (e) {
@@ -62,23 +89,6 @@ const getProductById = async (productId) => {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows] = await connection.execute(
       `SELECT * FROM products WHERE productId = ${productId}`
-    );
-    return rows;
-  } catch (e) {
-    console.error(e);
-  }
-};
-
-const updateProduct = async (
-  productId,
-  updateName,
-  updateDescription,
-  updateImage
-) => {
-  try {
-    const connection = await mysql.createConnection(mysqlConfig);
-    const [rows, fields] = await connection.execute(
-      `UPDATE products SET name = "${updateName}", description= "${updateDescription}", image="${updateImage}" WHERE productId = ${productId}`
     );
     return rows;
   } catch (e) {

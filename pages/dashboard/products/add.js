@@ -7,6 +7,8 @@ const Add = () => {
     productId: "",
     name: "",
     description: "",
+    name_vn: "",
+    description_vn: "",
     filepath: "",
     category: "",
   };
