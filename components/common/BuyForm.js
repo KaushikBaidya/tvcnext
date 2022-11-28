@@ -39,7 +39,7 @@ const BuyForm = ({ title = "" }) => {
       );
   };
   return (
-    <form className="mt-10" ref={form} onSubmit={send}>
+    <form className="shadow-lg" ref={form} onSubmit={send}>
       {title && (
         <div>
           <label>{title}</label>

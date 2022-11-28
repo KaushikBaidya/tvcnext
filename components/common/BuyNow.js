@@ -31,10 +31,10 @@ const BuyNow = ({ title }) => {
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
+          className="fixed inset-0 overflow-y-auto"
           onClose={closeModal}
         >
-          <div className="min-h-screen px-4 text-center">
+          <div className="min-h-screen px-4 text-center ">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -63,9 +63,12 @@ const BuyNow = ({ title }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-lg p-12 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-lg overflow-hidden text-left align-middle rounded-2xl my-24 bg-lime-300 p-10 transition-all transform z-40">
                 <BuyForm title={title} />
               </div>
+              {/* <div className="inline-block w-full max-w-lg p-12 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl ">
+                <BuyForm title={title} />
+              </div> */}
             </Transition.Child>
           </div>
         </Dialog>

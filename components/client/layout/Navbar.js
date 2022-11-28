@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <header className="max-w-screen-3xl mx-auto">
-      <div className="fixed w-full xl:max-w-screen-3xl mx-auto flex flex-wrap items-center justify-between z-50 py-2 bg-[#ffffff] backdrop-blur-2xl text-black">
+      <div className="fixed w-full xl:max-w-screen-3xl mx-auto flex flex-wrap items-center justify-between z-10 py-2 bg-[#ffffff] backdrop-blur-2xl text-black">
         <div className="w-full flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <Link href="/">
             <div className="w-20 mx-5 cursor-pointer ">
@@ -74,13 +74,13 @@ const Navbar = () => {
                   </span>
                 </button>
                 <ul id="menu" aria-hidden="true" className="dropdown">
-                  <Link href="/allProducts">
+                  <Link href="/allproducts">
                     <li className="dropdown-menu ">All Products</li>
                   </Link>
-                  <Link href="/allProducts">
+                  <Link href="/product/biomass">
                     <li className="dropdown-menu">Biomass</li>
                   </Link>
-                  <Link href="/allProducts">
+                  <Link href="/product/mineral">
                     <li className="dropdown-menu">Mineral</li>
                   </Link>
                   <Link href="/allProducts">
