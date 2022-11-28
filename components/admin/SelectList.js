@@ -49,6 +49,7 @@ export const SelectFromOptions = ({
   errorMessage,
   ...rest
 }) => {
+  console.log(options);
   return (
     <div className="form-row w-full">
       <label>{label}</label>

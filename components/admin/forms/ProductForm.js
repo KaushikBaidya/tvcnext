@@ -45,8 +45,6 @@ const ProductForm = ({
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
 
-  console.log(filepath);
-
   const {
     register,
     handleSubmit,
