@@ -8,11 +8,12 @@ import Input from "../Input";
 import SaveButton from "../../common/button/SaveButton";
 
 const schema = yup.object({
-  categoryId: yup.string().max(50),
-  category: yup.string().required("Required.").max(50),
+  aboutId: yup.string().max(50),
+  section1: yup.string().required("Required."),
+  section2: yup.string().required("Required."),
 });
 
-const CategoryForm = ({
+const AboutForm = ({
   defaultValues,
   path,
   mutateAsync,
@@ -33,13 +34,14 @@ const CategoryForm = ({
     defaultValues: defaultValues,
     resolver: yupResolver(schema),
   });
-  const { category } = errors;
+  const { section1, section2 } = errors;
 
   const onSubmit = async (formData) => {
     setSubmitting(true);
     let data = {
-      categoryId: formData.categoryId,
-      category: formData.category,
+      aboutId: formData.aboutId,
+      section1: formData.section1,
+      section2: formData.section2,
     };
     try {
       const { status } = await mutateAsync({
@@ -70,15 +72,22 @@ const CategoryForm = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="hidden" {...register("categoryId")} />
+      <input type="hidden" {...register("aboutId")} />
 
       <div className="form-col">
         <Input
-          name="category"
-          label="Category"
+          name="section1"
+          label="Section 1"
           type="text"
           register={register}
-          errorMessage={category?.message}
+          errorMessage={section1?.message}
+        />
+        <Input
+          name="section2"
+          label="Section 2"
+          type="text"
+          register={register}
+          errorMessage={section2?.message}
         />
 
         <SaveButton btnText={btnText} disabled={submitting} />
@@ -87,4 +96,4 @@ const CategoryForm = ({
   );
 };
 
-export default CategoryForm;
+export default AboutForm;

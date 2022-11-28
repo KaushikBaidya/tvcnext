@@ -33,7 +33,14 @@ const schema = yup
     // }),
   });
 
-const ProductForm = ({ defaultValues, path, mutateAsync }) => {
+const ProductForm = ({
+  defaultValues,
+  path,
+  mutateAsync,
+  action,
+  btnText,
+  returnPath,
+}) => {
   const [imageUrl, setPhoto] = useState(defaultValues.image);
   const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
@@ -76,10 +83,11 @@ const ProductForm = ({ defaultValues, path, mutateAsync }) => {
       });
       if (status === 201) {
         toast.success("Saved successfully!");
+        reset();
       }
       if (status === 204) {
         toast.success("Update successful!");
-        router.push("/dashboard/products");
+        router.push(returnPath);
       }
     } catch (error) {
       if (error.response) {
@@ -90,9 +98,9 @@ const ProductForm = ({ defaultValues, path, mutateAsync }) => {
         toast.error("Error :", error.message);
       }
     } finally {
-      reset();
       setPhoto("");
       setSubmitting(false);
+      action();
     }
   };
 
@@ -151,7 +159,7 @@ const ProductForm = ({ defaultValues, path, mutateAsync }) => {
           name="description_vn"
           errorMessage={description_vn?.message}
         />
-        <SaveButton btnText="Save" disabled={submitting} />
+        <SaveButton btnText={btnText} disabled={submitting} />
       </div>
     </form>
   );
