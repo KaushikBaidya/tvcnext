@@ -47,21 +47,58 @@ const Navbar = () => {
                 <a onClick={() => setNavbarOpen(!navbarOpen)}>About Us</a>
               </Link>
             </li>
-            <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
+            {/* <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
               <Link href="/ourproducts">
                 <a onClick={() => setNavbarOpen(!navbarOpen)}>Products</a>
               </Link>
+            </li> */}
+            <li className="px-4 border-transparent border-b-4 py-2 text-md ">
+              <div className="group inline-block">
+                <button
+                  aria-haspopup="true"
+                  aria-controls="menu"
+                  className="outline-none focus:outline-none bg-white rounded-sm flex items-center w-32"
+                >
+                  <span className="pr-1 font-medium uppercase flex-1">
+                    Products
+                  </span>
+                  <span>
+                    <svg
+                      className="fill-current h-4 w-4 transform group-hover:-rotate-180
+        transition duration-150 ease-in-out"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </span>
+                </button>
+                <ul id="menu" aria-hidden="true" className="dropdown">
+                  <Link href="/allProducts">
+                    <li className="dropdown-menu ">All Products</li>
+                  </Link>
+                  <Link href="/allProducts">
+                    <li className="dropdown-menu">Biomass</li>
+                  </Link>
+                  <Link href="/allProducts">
+                    <li className="dropdown-menu">Mineral</li>
+                  </Link>
+                  <Link href="/allProducts">
+                    <li className="dropdown-menu">Self-Biological Products</li>
+                  </Link>
+                  <Link href="/">
+                    <li className="dropdown-menu">
+                      Spoon/Plate/Chopsticks/Bowl
+                    </li>
+                  </Link>
+                </ul>
+              </div>
             </li>
             <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
               <Link href="/contact">
                 <a onClick={() => setNavbarOpen(!navbarOpen)}>Contact Us</a>
               </Link>
             </li>
-            {/* <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
-              <Link href="/Contact">
-                <a onClick={() => setNavbarOpen(!navbarOpen)}>Contact</a>
-              </Link>
-            </li> */}
           </ul>
         </div>
       </div>

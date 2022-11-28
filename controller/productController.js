@@ -5,7 +5,7 @@ const createProduct = async (name, description, image, category) => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      `INSERT INTO products_en ( name, description, image, category) VALUES ('${name}', '${description}', '${image}', '${category}');`
+      `INSERT INTO products ( name, description, image, category) VALUES ('${name}', '${description}', '${image}', '${category}');`
     );
     return rows;
   } catch (e) {
@@ -16,9 +16,7 @@ const createProduct = async (name, description, image, category) => {
 const getProducts = async () => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
-    const [rows, fields] = await connection.execute(
-      "SELECT * FROM `products_en`"
-    );
+    const [rows, fields] = await connection.execute("SELECT * FROM `products`");
     return rows;
   } catch (e) {
     console.error(e);
@@ -28,7 +26,7 @@ const getProductsByBiomass = async () => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      "SELECT * FROM `products_en` WHERE category = 1"
+      "SELECT * FROM `products` WHERE category = 1"
     );
     return rows;
   } catch (e) {
@@ -39,7 +37,7 @@ const getProductsByMineral = async () => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      "SELECT * FROM `products_en` WHERE category = 2"
+      "SELECT * FROM `products` WHERE category = 2"
     );
     return rows;
   } catch (e) {
@@ -63,7 +61,7 @@ const getProductById = async (productId) => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows] = await connection.execute(
-      `SELECT * FROM products_en WHERE productId = ${productId}`
+      `SELECT * FROM products WHERE productId = ${productId}`
     );
     return rows;
   } catch (e) {
@@ -80,7 +78,7 @@ const updateProduct = async (
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      `UPDATE products_en SET name = "${updateName}", description= "${updateDescription}", image="${updateImage}" WHERE productId = ${productId}`
+      `UPDATE products SET name = "${updateName}", description= "${updateDescription}", image="${updateImage}" WHERE productId = ${productId}`
     );
     return rows;
   } catch (e) {
@@ -92,7 +90,7 @@ const deleteProductById = async (productId) => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      `DELETE FROM products_en WHERE productId = ${productId}`
+      `DELETE FROM products WHERE productId = ${productId}`
     );
     return rows;
   } catch (e) {

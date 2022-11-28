@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import {
   FiFacebook,
@@ -69,6 +70,9 @@ const Footer = () => {
               </p>
               <p>
                 <a href="#seeContact">CONTACT US</a>
+              </p>
+              <p>
+                <Link href="/login">Login</Link>
               </p>
             </div>
           </div>

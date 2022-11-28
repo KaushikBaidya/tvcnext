@@ -1,22 +1,7 @@
-// import mysqlConfig from "../../database/db";
 import { getUser } from "../../controller/userController";
 import jwt from "jsonwebtoken";
 
-// const mysql = require("mysql2/promise");
-
 const bcrypt = require("bcrypt");
-
-// const getUser = async (user) => {
-//   try {
-//     const connection = await mysql.createConnection(mysqlConfig);
-//     const [rows] = await connection.execute(
-//       `SELECT * FROM userdb.usertable where user = '${user}'`
-//     );
-//     return rows;
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
 
 export default async function handler(req, res) {
   const method = req.method;
@@ -40,13 +25,11 @@ export default async function handler(req, res) {
         }
       );
 
-      res
-        .status(200)
-        .json({
-          token,
-          fullname: result[0].fullname,
-          message: "Login Success",
-        });
+      res.status(200).json({
+        token,
+        fullname: result[0].fullname,
+        message: "Login Success",
+      });
     } else {
       res.json({ message: "Login failed" });
     }
