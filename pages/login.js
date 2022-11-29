@@ -42,9 +42,11 @@ export default function Login() {
       }).then((response) => {
         console.log(response);
         if (response.data.message === "Login Success") {
-          toast.success("Log In");
+          localStorage.setItem("user", response.data.fullname);
+          localStorage.setItem("token", response.data.token);
           value.setUser(response.data.fullname);
           value.setToken(response.data.token);
+          toast.success("Log In");
           router.push("/dashboard");
         } else {
           toast.error(response.data.message);

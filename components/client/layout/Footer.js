@@ -10,7 +10,7 @@ import {
   FiMapPin,
   FiPhoneCall,
 } from "react-icons/fi";
-import logoPic from "../../../public/logo.png";
+import logoPic from "../../../public/images/logo.png";
 // import { useTranslation } from "react-i18next";
 
 const Footer = () => {

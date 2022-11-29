@@ -1,17 +1,23 @@
 import React from "react";
 import Image from "next/image";
-import Fire from "../../../public/burning.jpg";
-import Wood from "../../../public/woodpellets.jpg";
+import { useRouter } from "next/router";
+import { en } from "../../../public/locales/en";
+import { vn } from "../../../public/locales/vn";
+import Fire from "../../../public/images/burning.jpg";
+import Wood from "../../../public/images/woodpellets.jpg";
 
 const AboutUs = () => {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : vn;
   return (
     <section
       id="seeAbout"
       className="grid grid-cols-1 px-6 justify-items-center pt-20 h-full"
     >
       <h1 className="text-2xl lg:text-5xl font-semibold mb-5">
-        <span className="text-[#36B34B] uppercase">ABOUT </span>
-        <span className="text-[#F5921E] uppercase">US</span>
+        <span className="text-[#36B34B] uppercase">{t.title_about} </span>
+        <span className="text-[#F5921E] uppercase">{t.title_us}</span>
       </h1>
       <div className="max-w-[1500px] mx-auto grid grid-cols-1 md:grid-cols-3 justify-items-center md:gap-5 my-5">
         <div className="h-56 rounded-lg overflow-hidden mx-5">

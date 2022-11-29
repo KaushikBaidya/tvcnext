@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import logoPic from "../../../public/logo.png";
+import logoPic from "../../../public/images/logo.png";
+import Language from "../../common/Language";
+import { useRouter } from "next/router";
+import { en } from "../../../public/locales/en";
+import { vn } from "../../../public/locales/vn";
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en" ? en : vn;
 
   return (
     <header className="max-w-screen-3xl mx-auto">
@@ -39,12 +47,12 @@ const Navbar = () => {
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
             <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
               <Link href="/">
-                <a onClick={() => setNavbarOpen(!navbarOpen)}>HOME</a>
+                <a onClick={() => setNavbarOpen(!navbarOpen)}>{t.home}</a>
               </Link>
             </li>
             <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
               <Link href="/aboutus">
-                <a onClick={() => setNavbarOpen(!navbarOpen)}>About Us</a>
+                <a onClick={() => setNavbarOpen(!navbarOpen)}>{t.about}</a>
               </Link>
             </li>
             {/* <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
@@ -60,7 +68,7 @@ const Navbar = () => {
                   className="outline-none focus:outline-none bg-white rounded-sm flex items-center w-32"
                 >
                   <span className="pr-1 font-medium uppercase flex-1">
-                    Products
+                    {t.products}
                   </span>
                   <span>
                     <svg
@@ -96,9 +104,10 @@ const Navbar = () => {
             </li>
             <li className="px-4 border-transparent border-b-4 hover:border-[#EF1C24] py-2 font-medium uppercase">
               <Link href="/contact">
-                <a onClick={() => setNavbarOpen(!navbarOpen)}>Contact Us</a>
+                <a onClick={() => setNavbarOpen(!navbarOpen)}>{t.contact}</a>
               </Link>
             </li>
+            <Language />
           </ul>
         </div>
       </div>

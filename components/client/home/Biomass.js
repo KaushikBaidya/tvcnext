@@ -11,7 +11,7 @@ const Biomass = () => {
 
   const data = list.data;
   // const data = list.data.filter((el) => el.category === "1");
-
+  console.log(data);
   return (
     <section className="pb-14">
       <div className="h-full grid grid-cols-1">

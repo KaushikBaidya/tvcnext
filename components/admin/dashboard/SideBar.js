@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 import { useGlobalContext } from "../../../context/context";
 
-import logoPic from "../../../public/logo.png";
+import logoPic from "../../../public/images/logo.png";
 
 function SideBar({ action }) {
   const value = useGlobalContext();

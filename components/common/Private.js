@@ -11,6 +11,7 @@ const Private = ({ children }) => {
   const router = useRouter();
   const value = useGlobalContext();
 
+  console.log(value);
   useEffect(() => {
     if (!value.token) router.push("/login");
     else {

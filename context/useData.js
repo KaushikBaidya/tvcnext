@@ -1,21 +1,21 @@
-// import createPersistedState from "use-persisted-state";
-// const useAuthState = createPersistedState("auth");
-// const useTokenState = createPersistedState("token");
-// import usePersistedState from "use-persisted-state-hook";
-// const useAuthState = usePersistedState("auth");
-// const useTokenState = usePersistedState("token");
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useData = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  // const [user, setUser] = usePersistedState("");
-  // const [token, setToken] = usePersistedState("");
+
+  useEffect(() => {
+    // setUser(localStorage?.user);
+    // setToken(localStorage?.token);
+    setUser(localStorage.getItem("user"));
+    setToken(localStorage.getItem("token"));
+  }, []);
 
   const signOut = () => {
-    setUser("");
-    setToken();
+    localStorage.setItem("user", "");
+    localStorage.setItem("token", "");
+    setUser(null);
+    setToken(null);
   };
 
   return {

@@ -1,6 +1,6 @@
 import Footer from "../components/client/layout/Footer";
 import Navbar from "../components/client/layout/Navbar";
-import { AppProvider } from "../context/context";
+import AppProvider from "../context/context";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "../styles/globals.css";
 import { Toaster } from "react-hot-toast";

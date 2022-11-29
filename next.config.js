@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     domains: ["drive.google.com"],
   },
+  i18n: {
+    locales: ["en", "vn"],
+    defaultLocale: "en",
+  },
 };
 
 module.exports = nextConfig;

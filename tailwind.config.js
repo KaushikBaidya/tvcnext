@@ -19,7 +19,7 @@ module.exports = {
         layout: "240px 1fr",
       },
       backgroundImage: {
-        sbanner: "url('/banner.jpg')",
+        sbanner: "url('/images/banner.jpg')",
       },
       colors: {
         primary: "#273238",

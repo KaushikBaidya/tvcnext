@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import error from "../public/Error.gif";
+import error from "../public/images/Error.gif";
 
 const ErrorPage = () => {
   return (
