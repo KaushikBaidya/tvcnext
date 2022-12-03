@@ -5,7 +5,12 @@ import { Loader } from "../../common/Loader";
 import { useGetData } from "../../../hooks/DataApi";
 
 const Mineral = () => {
-  const { data: list, isLoading } = useGetData("mineral", `/getMineral`);
+  const {
+    data: list,
+    error,
+    isLoading,
+    isError,
+  } = useGetData("productCategory", `/productCategory/2`);
 
   if (isLoading) return <Loader />;
 
@@ -35,7 +40,7 @@ const Mineral = () => {
                     />
                   </div>
                   <Link href={`/product/${item.productId}`}>
-                    <h2 className="text-center text-[#211A56] font-semibold text-lg uppercase p-5">
+                    <h2 className="text-center text-dark font-semibold text-lg uppercase p-5">
                       {item.name}
                     </h2>
                   </Link>

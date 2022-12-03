@@ -7,9 +7,6 @@ import Language from "../../common/Language";
 import { useRouter } from "next/router";
 import { en } from "../../../public/locales/en";
 import { vn } from "../../../public/locales/vn";
-import { Loader } from "../../common/Loader";
-import { Error } from "../../common/Error";
-import { useGetData } from "../../../hooks/DataApi";
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -17,20 +14,6 @@ const Navbar = () => {
   const router = useRouter();
   const { locale } = router;
   const t = locale === "en" ? en : vn;
-
-  const {
-    data: list,
-    error,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetData("category", `/getAllCategories`);
-
-  if (isLoading) return <Loader />;
-
-  if (isError) return <Error message={error.message} />;
-
-  const data = list.data;
 
   return (
     <header className="max-w-screen-3xl mx-auto">
@@ -100,15 +83,22 @@ const Navbar = () => {
                 </button>
                 <ul id="menu" aria-hidden="true" className="dropdown">
                   <Link href="/allproducts">
-                    <li className="dropdown-menu">All Products</li>
+                    <li className="dropdown-menu ">All Products</li>
                   </Link>
-                  {data.map((item) => (
-                    <li className="dropdown-menu" key={item.categoryId}>
-                      <Link href={`/product/category/${item.categoryId}`}>
-                        {item.category}
-                      </Link>
+                  <Link href="/product/biomass">
+                    <li className="dropdown-menu">Biomass</li>
+                  </Link>
+                  <Link href="/product/mineral">
+                    <li className="dropdown-menu">Mineral</li>
+                  </Link>
+                  <Link href="/allProducts">
+                    <li className="dropdown-menu">Self-Biological Products</li>
+                  </Link>
+                  <Link href="/">
+                    <li className="dropdown-menu">
+                      Spoon/Plate/Chopsticks/Bowl
                     </li>
-                  ))}
+                  </Link>
                 </ul>
               </div>
             </li>

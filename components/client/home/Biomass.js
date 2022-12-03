@@ -5,13 +5,17 @@ import { Loader } from "../../common/Loader";
 import { useGetData } from "../../../hooks/DataApi";
 
 const Biomass = () => {
-  const { data: list, isLoading } = useGetData("biomass", `/getBiomass`);
+  const {
+    data: list,
+    error,
+    isLoading,
+    isError,
+  } = useGetData("productCategory", `/productCategory/1`);
 
   if (isLoading) return <Loader />;
 
   const data = list.data;
-  // const data = list.data.filter((el) => el.category === "1");
-  console.log(data);
+
   return (
     <section className="pb-14">
       <div className="h-full grid grid-cols-1">
@@ -37,7 +41,7 @@ const Biomass = () => {
                     />
                   </div>
                   <Link href={`/product/${item.productId}`}>
-                    <h2 className="text-center text-[#211A56] font-semibold text-lg uppercase p-5">
+                    <h2 className="text-center text-dark font-semibold text-lg uppercase p-5">
                       {item.name}
                     </h2>
                   </Link>

@@ -25,8 +25,8 @@ const ProductList = ({ dataPath }) => {
                 <div className="p-5 rounded-3xl overflow-hidden">
                   <Image
                     src={`https://drive.google.com/thumbnail?id=${item.image}`}
-                    width={200}
-                    height={200}
+                    width={220}
+                    height={220}
                     alt=""
                   />
                 </div>

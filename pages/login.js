@@ -40,7 +40,6 @@ export default function Login() {
         path: "/login",
         formData: formData,
       }).then((response) => {
-        console.log(response);
         if (response.data.message === "Login Success") {
           localStorage.setItem("user", response.data.fullname);
           localStorage.setItem("token", response.data.token);
@@ -62,7 +61,7 @@ export default function Login() {
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
+        <h1 className="text-3xl font-semibold text-center text-darker underline">
           Log in
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>

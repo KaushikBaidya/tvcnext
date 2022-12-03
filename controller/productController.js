@@ -53,7 +53,7 @@ const getProductsByBiomass = async () => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      "SELECT * FROM `products` WHERE category = 1"
+      `SELECT * FROM products WHERE category = "1"`
     );
     return rows;
   } catch (e) {
@@ -72,17 +72,18 @@ const getProductsByMineral = async () => {
   }
 };
 
-// const getProductsByCategory = async (categoryId) => {
-//   try {
-//     const connection = await mysql.createConnection(mysqlConfig);
-//     const [rows, fields] = await connection.execute(
-//       `SELECT * FROM products_en WHERE category = "${categoryId}"`
-//     );
-//     return rows;
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
+const getProductsByCategory = async (categoryId) => {
+  try {
+    const connection = await mysql.createConnection(mysqlConfig);
+    const [rows, fields] = await connection.execute(
+      // `SELECT * FROM products WHERE category = 1`
+      `SELECT * FROM products WHERE category = ${categoryId}`
+    );
+    return rows;
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 const getProductById = async (productId) => {
   try {
@@ -116,6 +117,7 @@ const products = {
   deleteProductById,
   getProductsByBiomass,
   getProductsByMineral,
+  getProductsByCategory,
 };
 
 module.exports = products;

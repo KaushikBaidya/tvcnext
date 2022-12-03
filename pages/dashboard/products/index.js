@@ -24,7 +24,7 @@ const ProductsList = () => {
   if (isError) return <Error message={error.message} />;
 
   const data = list.data;
-  console.log(data);
+
   return (
     <main>
       <div className="card w-full">

@@ -19,7 +19,7 @@ const BuyNow = ({ title }) => {
   return (
     <>
       <button
-        className=" bg-[#f59b34] px-10 py-2 rounded-lg text-white font-semibold "
+        className=" bg-orange px-10 py-2 rounded-lg text-white font-semibold "
         onClick={() => {
           openModal();
         }}
