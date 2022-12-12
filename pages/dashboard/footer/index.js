@@ -17,7 +17,7 @@ export default function AddressList() {
     isLoading,
     isError,
     refetch,
-  } = useGetData("addewss", `/getAddress`);
+  } = useGetData("footer", `/getFooter`);
 
   if (isLoading) return <Loader />;
 
@@ -50,7 +50,7 @@ export default function AddressList() {
               <ListCol label="Address :" value={item.address} />
               <ListCol label="Address Vn :" value={item.address_vn} />
               <ListCol label="Address2 :" value={item.address2} />
-              <ListCol label="Addres2 Vn :" value={item.address2_vn} />
+              <ListCol label="Address2 Vn :" value={item.address2_vn} />
               <div>
                 <div className="flex justify-end space-x-2">
                   <EditButton

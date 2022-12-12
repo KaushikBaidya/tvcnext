@@ -111,6 +111,14 @@ const Signup = () => {
           </p>
         </div>
       </div>
+      <div className="mt-6">
+        <p className="pt-2 text-center text-sm text-black">
+          No account?{" "}
+          <Link href="/register">
+            <span className="underline">Register</span>
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

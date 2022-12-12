@@ -27,7 +27,8 @@ export default function About() {
 
   return (
     <div className="card w-full">
-      <TopHeader title="About Us" btn="Save" path="/dashboard/about/add" />
+      <TopHeader title="About Us" />
+      {/* <TopHeader title="About Us" btn="Save" path="/dashboard/about/add" /> */}
 
       <div className="list-wrapper">
         <div className="md:grid grid-cols-3 list-header">
@@ -46,10 +47,10 @@ export default function About() {
               <div>
                 <div className="flex justify-end space-x-2">
                   <EditButton path={`/dashboard/about/edit/${item.aboutId}`} />
-                  <DeleteButton
+                  {/* <DeleteButton
                     path={`/about/${item.aboutId}`}
                     action={refetch}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

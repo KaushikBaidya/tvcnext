@@ -24,15 +24,40 @@ export default async function handler(req, res) {
     //   break;
 
     case "POST":
+      const name = req.body.name;
       const address = req.body.address;
-      const address_vn = req.body.address_vn;
       const address2 = req.body.address2;
-      const address2_vn = req.body.address2_vn;
+      const email = req.body.email;
+      const email2 = req.body.email2;
+      const number = req.body.number;
+      const number2 = req.body.number2;
+      const facebook = req.body.facebook;
+      const whatsapp = req.body.whatsapp;
+      const twitter = req.body.twitter;
+      const youtube = req.body.youtube;
+      const zalo = req.body.zalo;
+      const wechat = req.body.wechat;
+      const viber = req.body.viber;
 
-      result = await createFooter(address, address_vn, address2, address2_vn);
+      result = await createFooter(
+        name,
+        address,
+        address2,
+        email,
+        email2,
+        number,
+        number2,
+        facebook,
+        whatsapp,
+        twitter,
+        youtube,
+        zalo,
+        wechat,
+        viber
+      );
       res.status(201).json({
         ...result,
-        message: `category with title: ${address} created`,
+        message: `footer created`,
       });
       break;
 

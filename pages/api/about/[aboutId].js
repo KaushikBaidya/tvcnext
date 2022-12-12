@@ -26,9 +26,16 @@ export default async function handler(req, res) {
 
     case "POST":
       const section1 = req.body.section1;
+      const section1_vn = req.body.section1_vn;
       const section2 = req.body.section2;
+      const section2_vn = req.body.section2_vn;
 
-      result = await createAboutUs(section1, section2);
+      result = await createAboutUs(
+        section1,
+        section1_vn,
+        section2,
+        section2_vn
+      );
       res.status(201).json({
         ...result,
         message: `about us created`,
@@ -37,9 +44,17 @@ export default async function handler(req, res) {
 
     case "PUT":
       const updateSection1 = req.body.section1;
+      const updatedSection1_vn = req.body.section1_vn;
       const updateSection2 = req.body.section2;
+      const updatedSection2_vn = req.body.section2_vn;
 
-      result = await updateAboutUs(aboutId, updateSection1, updateSection2);
+      result = await updateAboutUs(
+        aboutId,
+        updateSection1,
+        updatedSection1_vn,
+        updateSection2,
+        updatedSection2_vn
+      );
       res.status(204).end("end");
       break;
 

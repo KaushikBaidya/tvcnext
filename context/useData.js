@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import Cookies from "universal-cookie";
 const useData = () => {
+  const cookie = new Cookies();
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
 
-  useEffect(() => {
-    // setUser(localStorage?.user);
-    // setToken(localStorage?.token);
-    setUser(localStorage.getItem("user"));
-    setToken(localStorage.getItem("token"));
-  }, []);
-
   const signOut = () => {
-    localStorage.setItem("user", "");
-    localStorage.setItem("token", "");
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    cookie.remove("token");
     setUser(null);
     setToken(null);
   };
@@ -26,5 +21,4 @@ const useData = () => {
     signOut,
   };
 };
-
 export default useData;

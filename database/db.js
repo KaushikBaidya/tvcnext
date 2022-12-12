@@ -7,8 +7,7 @@ const mysqlConfig = {
   host: "localhost",
   user: "root",
   database: "tvc",
-  password: "password",
-  port: 3306,
+  password: "",
 };
 
 export default mysqlConfig;

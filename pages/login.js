@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 import { useGlobalContext } from "../context/context";
@@ -8,17 +8,22 @@ import { toast } from "react-hot-toast";
 import { usePostData } from "../hooks/DataApi";
 import Input from "../components/admin/Input";
 import Link from "next/link";
-// import jwt_decode from "jwt-decode";
+import Cookies from "universal-cookie";
 
 const schema = yup.object({
   username: yup.string().required("Required.").max(50),
-  password: yup.string().required("Required."),
+  password: yup
+    .string()
+    .max(20)
+    .required("Required")
+    .min(8, "Password is too short, at least 8 characters"),
 });
 
 export default function Login() {
   const router = useRouter();
   const value = useGlobalContext();
   const { mutateAsync } = usePostData();
+  const cookie = new Cookies();
 
   const {
     register,
@@ -40,12 +45,12 @@ export default function Login() {
         path: "/login",
         formData: formData,
       }).then((response) => {
+        console.log(response);
         if (response.data.message === "Login Success") {
-          localStorage.setItem("user", response.data.fullname);
-          localStorage.setItem("token", response.data.token);
+          toast.success("Log In");
           value.setUser(response.data.fullname);
           value.setToken(response.data.token);
-          toast.success("Log In");
+          cookie.set("token", response.data.token);
           router.push("/dashboard");
         } else {
           toast.error(response.data.message);
@@ -58,10 +63,16 @@ export default function Login() {
     }
   };
 
+  useEffect(() => {
+    if (value?.user) {
+      router.push("/dashboard");
+    }
+  });
+
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-darker underline">
+        <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
           Log in
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -83,16 +94,14 @@ export default function Login() {
           </div>
           <div className="mt-6">
             <button className="save-btn">Login</button>
+            <p className="pt-8 text-center text-sm text-black">
+              No account?{" "}
+              <Link className="underline" href="/register">
+                Register
+              </Link>
+            </p>
           </div>
         </form>
-        <div className="mt-6">
-          <p className="pt-2 text-center text-sm text-black">
-            No account?{" "}
-            <Link href="/register">
-              <span className="underline">Register</span>
-            </Link>
-          </p>
-        </div>
       </div>
     </div>
   );

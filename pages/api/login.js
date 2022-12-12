@@ -13,25 +13,31 @@ export default async function handler(req, res) {
 
     result = await getUser(user);
 
-    const hashedPassword = result[0].password;
+    console.log(result.length);
 
-    // if (user === "admin" && password === "admin") {
-    if (await bcrypt.compare(password, hashedPassword)) {
-      var token = jwt.sign(
-        { success: true, user, fullname: result[0].fullname, role: "admin" },
-        "jwtSecret",
-        {
-          expiresIn: "2d",
-        }
-      );
+    if (result.length > 0) {
+      const hashedPassword = result[0].password;
 
-      res.status(200).json({
-        token,
-        fullname: result[0].fullname,
-        message: "Login Success",
-      });
+      // if (user === "admin" && password === "admin") {
+      if (await bcrypt.compare(password, hashedPassword)) {
+        var token = jwt.sign(
+          { success: true, user, fullname: result[0].fullname, role: "admin" },
+          "jwtSecret",
+          {
+            expiresIn: "2d",
+          }
+        );
+
+        res.status(200).json({
+          token,
+          fullname: result[0].fullname,
+          message: "Login Success",
+        });
+      } else {
+        return res.json({ message: "Login failed" });
+      }
     } else {
-      res.json({ message: "Login failed" });
+      return res.json({ message: "User Not Found" });
     }
   } else {
     // res.json({ message: "not success login" });

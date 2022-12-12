@@ -28,6 +28,7 @@
     "react-spinners": "^0.13.6",
     "swiper": "^8.4.5",
     "typewriter-effect": "^2.19.0",
+    "universal-cookie": "^4.0.4",
     "yup": "^0.32.11"
   },
   "devDependencies": {

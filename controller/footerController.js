@@ -23,58 +23,59 @@ const getFooterById = async (footerId) => {
   }
 };
 
-// const createFooter = async (
-//   address,
-//   address_vn,
-//   address2,
-//   address2_vn,
-//   gmail,
-//   facebook,
-//   youtube,
-//   wechat,
-//   zalo,
-//   viber,
-//   whatsapp,
-//   twitter,
-//   pinterest
-// ) => {
-//   try {
-//     const connection = await mysql.createConnection(mysqlConfig);
-//     const [rows, fields] = await connection.execute(
-//       `INSERT INTO footer ( address, address_vn, address2, address2_vn,  gmail, facebook, youtube, wechat, zalo,viber, whatsapp, twitter, pinterest) VALUES ('${address}', '${address_vn}', '${address2}', '${address2_vn}', '${gmail}', '${facebook}', '${youtube}', '${wechat}', '${zalo}', '${viber}', '${whatsapp}', '${twitter}', '${pinterest}');`
-//     );
-//     return rows;
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
-
-const updateFooter = async (
-  footerId,
-  updatedAddress,
-  updatedAddress_vn,
-  updatedAddress2,
-  updatedAddress2_vn,
-  updatedGmail,
-  updatedFacebook,
-  updatedYoutube,
-  updatedWechat,
-  updatedZalo,
-  updatedViber,
-  updatedWhatsapp,
-  updatedTwitter,
-  updatedPinterest
+const createFooter = async (
+  name,
+  address,
+  address2,
+  email,
+  email2,
+  number,
+  number2,
+  facebook,
+  whatsapp,
+  twitter,
+  youtube,
+  zalo,
+  wechat,
+  viber
 ) => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      `UPDATE footer SET address = "${updatedAddress}", address_vn = "${updatedAddress_vn}", address2 = "${updatedAddress2}", address2_vn = "${updatedAddress2_vn}", gmail = "${updatedGmail}", facebook = "${updatedFacebook}", youtube = "${updatedYoutube}", wechat = "${updatedWechat}", zalo ="${updatedZalo}", viber = "${updatedViber}", whatsapp = "${updatedWhatsapp}", twitter = "${updatedTwitter}", pinterest = "${updatedPinterest}" WHERE addressId = "${footerId}"`
+      `INSERT INTO footer ( name, address, address2, email, email2, facebook, whatsapp, twitter, youtube, zalo, wechat, viber) VALUES ('${name}', '${address}', '${address2}', '${email}','${email2}', '${number}', '${number2}', '${facebook}', '${whatsapp}', '${twitter}', '${youtube}', '${zalo}', '${wechat}', '${viber}' );`
     );
     return rows;
   } catch (e) {
     console.error(e);
   }
 };
+
+// const updateFooter = async (
+//   footerId,
+//   updatedAddress,
+//   updatedAddress_vn,
+//   updatedAddress2,
+//   updatedAddress2_vn,
+//   updatedGmail,
+//   updatedFacebook,
+//   updatedYoutube,
+//   updatedWechat,
+//   updatedZalo,
+//   updatedViber,
+//   updatedWhatsapp,
+//   updatedTwitter,
+//   updatedPinterest
+// ) => {
+//   try {
+//     const connection = await mysql.createConnection(mysqlConfig);
+//     const [rows, fields] = await connection.execute(
+//       `UPDATE footer SET address = "${updatedAddress}", address_vn = "${updatedAddress_vn}", address2 = "${updatedAddress2}", address2_vn = "${updatedAddress2_vn}", gmail = "${updatedGmail}", facebook = "${updatedFacebook}", youtube = "${updatedYoutube}", wechat = "${updatedWechat}", zalo ="${updatedZalo}", viber = "${updatedViber}", whatsapp = "${updatedWhatsapp}", twitter = "${updatedTwitter}", pinterest = "${updatedPinterest}" WHERE addressId = "${footerId}"`
+//     );
+//     return rows;
+//   } catch (e) {
+//     console.error(e);
+//   }
+// };
 
 // const deleteAddressId = async (addressId) => {
 //   try {
@@ -89,7 +90,8 @@ const updateFooter = async (
 // };
 
 const footer = {
-  updateFooter,
+  createFooter,
+  // updateFooter,
   getFooterById,
 };
 

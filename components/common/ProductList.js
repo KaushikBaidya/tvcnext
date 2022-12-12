@@ -31,7 +31,7 @@ const ProductList = ({ dataPath }) => {
                   />
                 </div>
                 <Link href={`/product/${item.productId}`}>
-                  <h2 className="text-center text-[#211A56] font-semibold text-lg uppercase p-5">
+                  <h2 className="text-center text-[#3a3a3a] font-semibold text-lg uppercase p-5 cursor-pointer">
                     {item.name}
                   </h2>
                 </Link>

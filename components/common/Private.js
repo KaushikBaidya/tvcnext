@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useGlobalContext } from "../../context/context";
 import SideBar from "../admin/dashboard/SideBar";
 import Header from "../admin/dashboard/Header";
 import { Loader } from "./Loader";
-
+import Cookies from "universal-cookie";
 const Private = ({ children }) => {
-  const [loading, setLoading] = useState(true);
-
   const router = useRouter();
-  const value = useGlobalContext();
-
+  const cookie = new Cookies();
+  const getCookie = cookie.get("token");
+  const [loading, setLoading] = useState(true);
+  console.log(getCookie);
   useEffect(() => {
-    if (token) router.push("/login");
+    if (!getCookie) router.push("/login");
     else {
       setLoading(false);
     }
-  }, [value.token, router]);
+  }, [getCookie, router]);
 
   if (loading) return <Loader />;
-
   return (
     <>
       <div className="w-screen h-screen overflow-hidden">

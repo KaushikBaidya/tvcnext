@@ -23,11 +23,11 @@ const getAboutUsById = async (aboutId) => {
   }
 };
 
-const createAboutUs = async (section1, section2) => {
+const createAboutUs = async (section1, section1_vn, section2, section2_vn) => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      `INSERT INTO about ( section1, section2 ) VALUES ("${section1}","${section2}");`
+      `INSERT INTO about ( section1, section1_vn, section2,  section2_vn ) VALUES ("${section1}","${section1_vn}","${section2}","${section2_vn}");`
     );
     return rows;
   } catch (e) {
@@ -35,11 +35,17 @@ const createAboutUs = async (section1, section2) => {
   }
 };
 
-const updateAboutUs = async (aboutId, updatedSection1, updatedSection2) => {
+const updateAboutUs = async (
+  aboutId,
+  updatedSection1,
+  updatedSection1_vn,
+  updatedSection2,
+  updatedSection2_vn
+) => {
   try {
     const connection = await mysql.createConnection(mysqlConfig);
     const [rows, fields] = await connection.execute(
-      `UPDATE about SET section1 = "${updatedSection1}", section2 = "${updatedSection2}" WHERE aboutId = ${aboutId}`
+      `UPDATE about SET section1 = "${updatedSection1}", section1_vn = "${updatedSection1_vn}", section2 = "${updatedSection2}", section2_vn= "${updatedSection2_vn}" WHERE aboutId = ${aboutId}`
     );
     return rows;
   } catch (e) {

@@ -34,7 +34,9 @@ function Details() {
           defaultValues={{
             aboutId: data.aboutId,
             section1: data.section1,
+            section1_vn: data.section1_vn,
             section2: data.section2,
+            section2_vn: data.section2_vn,
           }}
           action={refetch}
           btnText="Update"
