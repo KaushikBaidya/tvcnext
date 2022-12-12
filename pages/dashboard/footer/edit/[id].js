@@ -4,7 +4,7 @@ import TopHeader from "../../../../components/admin/dashboard/TopHeader";
 import { useGetData, usePutData } from "../../../../hooks/DataApi";
 import { Loader } from "../../../../components/common/Loader";
 import { Error } from "../../../../components/common/Error";
-import AddressForm from "../../../../components/admin/forms/AddressForm";
+import FooterForm from "../../../../components/admin/forms/FooterForm";
 
 function Details() {
   const router = useRouter();
@@ -17,7 +17,7 @@ function Details() {
     isLoading,
     isError,
     refetch,
-  } = useGetData("address", `/address/${id}`);
+  } = useGetData("footer", `/footer/${id}`);
 
   if (isLoading) return <Loader />;
 
@@ -27,22 +27,36 @@ function Details() {
 
   return (
     <div className="card w-full max-w-screen-xl">
-      <TopHeader title="Edit address" btn="Return" path="/dashboard/address" />
+      <TopHeader
+        title="Edit Footer Section"
+        btn="Return"
+        path="/dashboard/footer"
+      />
 
       {data && (
-        <AddressForm
+        <FooterForm
           defaultValues={{
-            addressId: data.addressId,
+            footerId: data.footerId,
+            name: data.name,
             address: data.address,
-            address_vn: data.address_vn,
             address2: data.address2,
-            address2_vn: data.address2_vn,
+            email: data.email,
+            email2: data.email2,
+            number: data.number,
+            number2: data.number2,
+            facebook: data.facebook,
+            whatsapp: data.whatsapp,
+            twitter: data.twitter,
+            youtube: data.youtube,
+            zalo: data.zalo,
+            wechat: data.wechat,
+            viber: data.viber,
           }}
           action={refetch}
           btnText="Update"
           mutateAsync={mutateAsync}
-          path={`/address/${data.addressId}`}
-          returnPath="/dashboard/address"
+          path={`/footer/${data.footerId}`}
+          returnPath="/dashboard/footer"
         />
       )}
     </div>

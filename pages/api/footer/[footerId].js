@@ -63,17 +63,37 @@ export default async function handler(req, res) {
 
     case "PUT":
       const footerId = req.body.footerId;
+      const UpdatedName = req.body.name;
       const updatedAddress = req.body.address;
-      const updatedAddress_vn = req.body.address_vn;
       const updatedAddress2 = req.body.address2;
-      const updatedAddress2_vn = req.body.address2_vn;
+      const updatedEmail = req.body.email;
+      const updatedEmail2 = req.body.email2;
+      const updatedNumber = req.body.number;
+      const updatedNumber2 = req.body.number2;
+      const updatedFacebook = req.body.facebook;
+      const updatedWhatsapp = req.body.whatsapp;
+      const updatedTwitter = req.body.twitter;
+      const updatedYoutube = req.body.youtube;
+      const updatedZalo = req.body.zalo;
+      const updatedWechat = req.body.wechat;
+      const updatedViber = req.body.viber;
 
       result = await updateFooter(
         footerId,
+        UpdatedName,
         updatedAddress,
-        updatedAddress_vn,
         updatedAddress2,
-        updatedAddress2_vn
+        updatedEmail,
+        updatedEmail2,
+        updatedNumber,
+        updatedNumber2,
+        updatedFacebook,
+        updatedWhatsapp,
+        updatedTwitter,
+        updatedYoutube,
+        updatedZalo,
+        updatedWechat,
+        updatedViber
       );
       res.status(204).end("end");
       break;

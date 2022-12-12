@@ -1,27 +1,36 @@
 import TopHeader from "../../../components/admin/dashboard/TopHeader";
 import { usePostData } from "../../../hooks/DataApi";
-import AddressForm from "../../../components/admin/forms/AddressForm";
+import FooterForm from "../../../components/admin/forms/FooterForm";
 
 const Add = () => {
   const defaultValues = {
-    addressId: "",
+    name: "",
     address: "",
-    address_vn: "",
     address2: "",
-    address2_vn: "",
+    email: "",
+    email2: "",
+    number: "",
+    number2: "",
+    facebook: "",
+    whatsapp: "",
+    twitter: "",
+    youtube: "",
+    zalo: "",
+    wechat: "",
+    viber: "",
   };
 
   const { mutateAsync } = usePostData();
 
   return (
     <div className="card w-full max-w-screen-xl">
-      <TopHeader title="Add Address" btn="Return" path="/dashboard/address" />
-      <AddressForm
+      <TopHeader title="Add Footer" btn="Return" path="/dashboard/footer" />
+      <FooterForm
         defaultValues={defaultValues}
         action={() => {}}
         btnText="Save"
-        path="/address/createAddress"
-        returnPath="/dashboard/address"
+        path="/footer/createFooter"
+        returnPath="/dashboard/footer"
         mutateAsync={mutateAsync}
       />
     </div>

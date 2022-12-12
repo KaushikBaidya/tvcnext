@@ -10,14 +10,14 @@ import DeleteButton from "../../../components/common/button/DeleteButton";
 import { Loader } from "../../../components/common/Loader";
 import { Error } from "../../../components/common/Error";
 
-export default function AddressList() {
+export default function FooterList() {
   const {
     data: list,
     error,
     isLoading,
     isError,
     refetch,
-  } = useGetData("footer", `/getFooter`);
+  } = useGetData("footer", `/footer/getFooters`);
 
   if (isLoading) return <Loader />;
 
@@ -27,39 +27,36 @@ export default function AddressList() {
 
   return (
     <div className="card w-full">
-      <TopHeader
-        title="Address List"
-        btn="Save"
-        path="/dashboard/address/add"
-      />
+      <TopHeader title="Footer Information" />
+      {/* <TopHeader title="Address List" btn="Save" path="/dashboard/footer/add" /> */}
 
       <div className="list-wrapper">
         <div className="md:grid grid-cols-5 list-header">
+          <ListHeader label="Name" />
           <ListHeader label="Address" />
-          <ListHeader label="Address Vn" />
-          <ListHeader label="Address2" />
-          <ListHeader label="Address2 Vn" />
+          <ListHeader label="Email" />
+          <ListHeader label="Number" />
           <ListHeader label="" />
         </div>
         {data.length > 0 &&
           data.map((item) => (
             <div
-              key={item.addressId}
+              key={item.footerId}
               className="grid grid-cols-1 md:grid-cols-5 list-body"
             >
+              <ListCol label="Company Name :" value={item.name} />
               <ListCol label="Address :" value={item.address} />
-              <ListCol label="Address Vn :" value={item.address_vn} />
-              <ListCol label="Address2 :" value={item.address2} />
-              <ListCol label="Address2 Vn :" value={item.address2_vn} />
+              <ListCol label="Email :" value={item.email} />
+              <ListCol label="Number :" value={item.number} />
               <div>
                 <div className="flex justify-end space-x-2">
                   <EditButton
-                    path={`/dashboard/address/edit/${item.addressId}`}
+                    path={`/dashboard/footer/edit/${item.footerId}`}
                   />
-                  <DeleteButton
-                    path={`/address/${item.addressId}`}
+                  {/* <DeleteButton
+                    path={`/footer/${item.footerId}`}
                     action={refetch}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
