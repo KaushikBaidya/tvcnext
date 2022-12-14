@@ -159,3 +159,6 @@ li:hover > button svg {
 .min-w-32 {
   min-width: 8rem;
 }
+.social-icons {
+  @apply w-10 h-10 flex  justify-center items-center drop-shadow-xl rounded-lg text-white hover:bg-[#F5921E];
+}
