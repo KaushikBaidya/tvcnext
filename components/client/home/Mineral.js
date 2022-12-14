@@ -3,8 +3,11 @@ import Link from "next/link";
 import BuyNow from "../../common/BuyNow";
 import { Loader } from "../../common/Loader";
 import { useGetData } from "../../../hooks/DataApi";
+import { useRouter } from "next/router";
 
 const Mineral = () => {
+  const router = useRouter();
+  const { locale } = router;
   const {
     data: list,
     error,
@@ -41,11 +44,13 @@ const Mineral = () => {
                   </div>
                   <Link href={`/product/${item.productId}`}>
                     <h2 className="text-center text-dark font-semibold text-lg uppercase p-5">
-                      {item.name}
+                      {locale === "en" ? item.name : item.name_vn}
                     </h2>
                   </Link>
                   <div className="">
-                    <BuyNow title={item.name} />
+                    <BuyNow
+                      title={locale === "en" ? item.name : item.name_vn}
+                    />
                   </div>
                 </div>
               );

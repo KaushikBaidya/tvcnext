@@ -8,21 +8,21 @@ import Input from "../Input";
 import SaveButton from "../../common/button/SaveButton";
 
 const schema = yup.object({
-  footerId: yup.string().max(50),
+  footerId: yup.string().max(500),
   name: yup.string().required("Required.").max(500),
   address: yup.string().required("Required.").max(500),
-  address2: yup.string().max(50),
+  address2: yup.string().max(500),
   email: yup.string().required("Required.").max(500),
-  email2: yup.string().max(50),
+  email2: yup.string().max(500),
   number: yup.string().required("Required.").max(500),
-  number2: yup.string().max(50),
-  facebook: yup.string().max(50),
-  whatsapp: yup.string().max(50),
-  twitter: yup.string().max(50),
-  youtube: yup.string().max(50),
-  zalo: yup.string().max(50),
-  wechat: yup.string().max(50),
-  viber: yup.string().max(50),
+  number2: yup.string().max(500),
+  facebook: yup.string().max(500),
+  whatsapp: yup.string().max(500),
+  twitter: yup.string().max(500),
+  youtube: yup.string().max(500),
+  zalo: yup.string().max(500),
+  wechat: yup.string().max(500),
+  viber: yup.string().max(500),
 });
 
 const FooterForm = ({

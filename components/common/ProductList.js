@@ -3,8 +3,12 @@ import Link from "next/link";
 import BuyNow from "../common/BuyNow";
 import { Loader } from "../common/Loader";
 import { useGetData } from "../../hooks/DataApi";
+import { useRouter } from "next/router";
 
 const ProductList = ({ dataPath }) => {
+  const router = useRouter();
+  const { locale } = router;
+
   const { data: list, isLoading } = useGetData("products", dataPath);
 
   if (isLoading) return <Loader />;
@@ -32,11 +36,11 @@ const ProductList = ({ dataPath }) => {
                 </div>
                 <Link href={`/product/${item.productId}`}>
                   <h2 className="text-center text-[#3a3a3a] font-semibold text-lg uppercase p-5 cursor-pointer">
-                    {item.name}
+                    {locale === "en" ? item.name : item.name_vn}
                   </h2>
                 </Link>
                 <div className="">
-                  <BuyNow title={item.name} />
+                  <BuyNow title={locale === "en" ? item.name : item.name_vn} />
                 </div>
               </div>
             );

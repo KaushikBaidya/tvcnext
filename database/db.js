@@ -3,7 +3,6 @@ const mysqlConfig = {
   database: "tvcvlnrr_database",
   user: "tvcvlnrr_admin",
   password: "sUkNH1@.n2Gu",
-
   //------------
   // host: "localhost",
   // user: "root",

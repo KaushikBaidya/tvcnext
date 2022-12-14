@@ -33,7 +33,6 @@ const Footer = () => {
 
   const data = list.data[0];
 
-  console.log(data);
   return (
     <>
       <div className="w-full grid grid-cols-1 justify-items-center py-10 bg-white">
